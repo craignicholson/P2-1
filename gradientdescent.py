@@ -48,7 +48,7 @@ def linear_regression(features, values):
     ###########################
     y = values
     X = features
-    clf = SGDRegressor()
+    clf = SGDRegressor(alpha=0.0015,n_iter=100)
     clf.fit(X, y)
     intercept = clf 
     params = ""
