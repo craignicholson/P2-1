@@ -2452,7 +2452,7 @@ Cohens-D			 = 0.00002
 <h3 id="1.4-What-is-the-significance-and-interpretation-of-these-results?">1.4 What is the significance and interpretation of these results?<a class="anchor-link" href="#1.4-What-is-the-significance-and-interpretation-of-these-results?">&#182;</a></h3><h3 id="Mann-Whitney-U-Test">Mann Whitney U Test<a class="anchor-link" href="#Mann-Whitney-U-Test">&#182;</a></h3><p>We can reject the null hypothesis.  H0: u1 = u2</p>
 <h3 id="Welch's-T-Test">Welch's T-Test<a class="anchor-link" href="#Welch's-T-Test">&#182;</a></h3><p>We Reject the null hypothesis based on the t-test results.</p>
 <p>An Welch's t-test was run on the data as well as 99% confidence intervals (CI) for the mean difference. It was found during days with rain, the ENTRIESn_hourly (2028.20  ± 3189.43) were significantly higher than the days with No Rain (1845.54 ± 2878.77).</p>
-<p>(t(42647) = 5.043, p &lt; 0.001) with a difference of 182.66 (99% CI, 94.46 to 270.85) ENTRIESn_hourly.</p>
+<p>t(42647) = 5.043, p &lt; 0.005) with a difference of 182.66 (99% CI, 94.46 to 270.85) ENTRIESn_hourly.</p>
 
 </div>
 </div>
@@ -2945,8 +2945,8 @@ dtype: float64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.3-Why-did-you-select-these-features-in-your-model?">2.3 Why did you select these features in your model?<a class="anchor-link" href="#2.3-Why-did-you-select-these-features-in-your-model?">&#182;</a></h3><p><em>We are looking for specific reasons that lead you to believe that the selected features will contribute to the predictive power of your model. Your reasons might be based on intuition. For example, response for fog might be: “I decided to use fog because I thought that when it is very foggy outside people might decide to use the subway more often.” Your reasons might also be based on data exploration and experimentation, for example: “I used feature X because as soon as I included it in my model, it drastically improved my R2 value.”</em></p>
-<p>I reviewed the data would remove and add features one at a time and observe the r-squared result and the residual plots.</p>
-<p>Rain and meanprecipi were used because we are looking for the trend that rain causes more hourly entries and rain and the amount (average) rain during a timeperiod could influcnce a person to ride the subway.   A light rain or sprinkle might not lead to more people riding the subway.</p>
+<p>I reviewed the data and would remove and add features one at a time and observe the r-squared result and the residual plots.</p>
+<p>Rain and meanprecipi were used because we are looking for the trend that rain causes more hourly entries and rain and the amount (average) rain during a time period can influcnce a person to ride the subway.   A light rain or sprinkle might also lead to more people riding the subway.</p>
 <p>People ride the subway during all hours of the day but we have spikes in the morning and afternoon due to people commuting to New York so hour was used as part of the feature selection.</p>
 <p>Ridership on the subway declines on the weekends therefore it is important to have the day of the week in the feature set so we can get more accurate predications since a weekday or 0 to 6 would have a coefficient.</p>
 <p><em>One could code up all the posibilitys of the features and run them all through the OLS and sort by r-squared desecending to find the optimal solution for this dataset.</em></p>
@@ -7835,12 +7835,12 @@ qvj/AVRyPAhG+KFRAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.2-What-analyses-lead-you-to-this-conclusion?-You-should-use-results-from-both-your-statistical-tests-and-your-linear-regression-to-support-your-analysis.">4.2 What analyses lead you to this conclusion? You should use results from both your statistical tests and your linear regression to support your analysis.<a class="anchor-link" href="#4.2-What-analyses-lead-you-to-this-conclusion?-You-should-use-results-from-both-your-statistical-tests-and-your-linear-regression-to-support-your-analysis.">&#182;</a></h3><h4 id="Mann-Whitney-U-test">Mann Whitney U test<a class="anchor-link" href="#Mann-Whitney-U-test">&#182;</a></h4><p>The p-value less then the p-critical value in Table 1.0.</p>
-<p>(u(42647) = 153635120, p &lt; 0.001)<br>
+<p>u(42647) = 153635120, p &lt; 0.001<br>
 P-Value                 = 0.000005482</p>
 <h4 id="Welch's-t-test">Welch's t-test<a class="anchor-link" href="#Welch's-t-test">&#182;</a></h4><p>The T-statistic value and p-value both less the t-critical value and p-critical value in Table 2.0.</p>
 <p>We Reject the null hypothesis based on the t-test results.</p>
 <p>Welch's t-test was run on the data as well as 99% confidence intervals (CI) for the mean difference. It was found during days with rain, the ENTRIESn_hourly (2028.20  ± 3189.43) were significantly higher than the days with No Rain (1845.54 ± 2878.77).</p>
-<p>(t(42647) = 5.043, p &lt; 0.001) with a difference of 182.66 (99% CI, 94.46 to 270.85) ENTRIESn_hourly.</p>
+<p>t(42647) = 5.043, p &lt; 0.005) with a difference of 182.66 (99% CI, 94.46 to 270.85) ENTRIESn_hourly.</p>
 <p>Also the <strong>rain coefficient</strong> from the linear regression is a postive value, which means when we have rain the value is 1 the positive value coefficent is multipled by (1), which increases the hourly entry predications.  cond_Mist coefficient was positive as well.</p>
 <p>Review section 2.1 and 2.2 for additional coefficients.</p>
 

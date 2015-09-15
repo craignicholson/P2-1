@@ -18,7 +18,7 @@ In this question, you need to:
 
 def normalize_features(features):
     ''' 
-    Returns the means and standard deviations of the given features, along with a normalized feature
+    Returns the means and standard deviations of the given featu es, along with a normalized feature
     matrix.
     ''' 
     means = np.mean(features, axis=0)
@@ -42,17 +42,12 @@ def linear_regression(features, values):
     """
     Perform linear regression given a data set with an arbitrary number of features.
     """
-    
-    ###########################
-    ### YOUR CODE GOES HERE ###
-    ###########################
     y = values
     X = features
-    clf = SGDRegressor(alpha=0.0015,n_iter=100)
-    clf.fit(X, y)
-    intercept = clf 
-    params = ""
-    print intercept   
+    clf = SGDRegressor(n_iter=100)
+    result = clf.fit(X, y)
+    params = result.coef_
+    intercept =  result.intercept_ 
     
     return intercept, params
 
@@ -71,14 +66,6 @@ def predictions(dataframe):
     linear model because we cannot use it as a predictor: we cannot use exits 
     counts as a way to predict entry counts. 
     
-    Note: Due to the memory and CPU limitation of our Amazon EC2 instance, we will
-    give you a random subset (~50%) of the data contained in 
-    turnstile_data_master_with_weather.csv. You are encouraged to experiment with 
-    this exercise on your own computer, locally.
-    
-    If you receive a "server has encountered an error" message, that means you are 
-    hitting the 30-second limit that's placed on running your program. Try using a
-    smaller number of features or fewer iterations.
     '''
     ################################ MODIFY THIS SECTION #####################################
     # Select features. You should modify this section to try different features!             #
@@ -87,7 +74,7 @@ def predictions(dataframe):
     # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html          #
     ##########################################################################################
     features = dataframe[['rain', 'precipi', 'Hour', 'meantempi']]
-    dummy_units = pandas.get_dummies(dataframe['UNIT'], prefix='unit')
+    dummy_units = pd.get_dummies(dataframe['UNIT'], prefix='unit')
     features = features.join(dummy_units)
     
     # Values
@@ -109,9 +96,18 @@ def predictions(dataframe):
     # predictions = norm_intercept + np.dot(normalized_features_array, norm_params)
     
     return predictions
-    
+
+def compute_r_squared(data, predictions):
+    SST = ((data-np.mean(data))**2).sum()
+    SSReg = ((predictions-np.mean(data))**2).sum()
+    r_squared = SSReg / SST
+ 
+    return r_squared    
     
 if __name__ == "__main__":
-    input_filename = "/Home/cnicholson/python/turnstile_data_master_with_weather.csv"
+    input_filename = '/home/cnicholson/python/turnstile_data_master_with_weather.csv'
     df = pd.read_csv(input_filename)
     predicted_values = predictions(df)
+    r_squared = compute_r_squared(df['ENTRIESn_hourly'], predicted_values)
+    print r_squared
+    
